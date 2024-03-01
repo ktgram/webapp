@@ -20,6 +20,8 @@ class StartController {
 
     @UpdateHandler([UpdateType.MESSAGE])
     suspend fun messageObserver(update: MessageUpdate, user: User, bot: TelegramBot) {
-        sendMessage { "We've got information from webapp: ${update.message.webAppData?.data}" }.send(user, bot)
+        update.message.webAppData?.also {
+            sendMessage { "We've got information from webapp: ${it.data}" }.send(user, bot)
+        }
     }
 }
