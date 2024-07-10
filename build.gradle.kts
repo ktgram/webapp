@@ -23,14 +23,18 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(libs.tg.bot)
-                implementation(libs.tg.webapp)
                 implementation(libs.kotlinx.html)
             }
         }
         jvmMain {
             dependencies {
+                implementation(libs.tg.bot)
                 implementation(libs.tg.ktor)
+            }
+        }
+        jsMain {
+            dependencies {
+                implementation(libs.tg.webapp)
             }
         }
     }
