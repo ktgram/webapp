@@ -1,3 +1,4 @@
+import eu.vendeli.tgbot.utils.checkIsInitDataSafe
 import eu.vendeli.webapps.button.setParams
 import eu.vendeli.webapps.core.webApp
 import eu.vendeli.webapps.utils.onMainButtonClicked
@@ -37,6 +38,10 @@ fun main() {
     }
 
     val userCard = document.getElementById("usercard")
+
+    if (webApp.initData.checkIsInitDataSafe("BOT_TOKEN", webApp.initDataUnsafe.hash)) {
+        console.warn("Data is unsafe")
+    }
 
     val profName = document.createElement("p")
     profName.textContent = "${webApp.initDataUnsafe.user?.firstName}\n" +
