@@ -1,8 +1,8 @@
-val jvmTargetVersion = JavaVersion.VERSION_11
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.ksp)
+    application
+    distribution
 }
 
 group = "com.example.webapp"
@@ -13,32 +13,41 @@ repositories {
 }
 
 kotlin {
-    jvm {
-        withJava()
-        compilations.all {
-            kotlinOptions.jvmTarget = jvmTargetVersion.majorVersion
-        }
-    }
+    jvm { withJava() }
     js {
         browser()
         binaries.executable()
     }
-    jvmToolchain(jvmTargetVersion.majorVersion.toInt())
+    jvmToolchain(17)
 
     sourceSets {
-        named("jvmMain") {
+        commonMain {
             dependencies {
                 implementation(libs.tg.bot)
-            }
-        }
-
-        named("jsMain") {
-            dependencies {
                 implementation(libs.tg.webapp)
                 implementation(libs.kotlinx.html)
             }
         }
+        jvmMain {
+            dependencies {
+                implementation(libs.tg.ktor)
+            }
+        }
     }
+}
+
+tasks {
+    named("jvmProcessResources") { mustRunAfter("copyJsResources") }
+    build { dependsOn("copyJsResources") }
+    create<Copy>("copyJsResources") {
+        mustRunAfter("jsBrowserDistribution")
+        from(layout.buildDirectory.dir("dist/js/productionExecutable"))
+        into(layout.projectDirectory.dir("src/jvmMain/resources/static"))
+    }
+}
+
+application {
+    mainClass.set("com.example.webapp.TgBotApplicationKt")
 }
 
 dependencies {
