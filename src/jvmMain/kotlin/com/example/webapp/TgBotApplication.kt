@@ -25,8 +25,10 @@ fun main(): Unit = runBlocking {
         }
 
         declareBot {
-            identifier = "BotName"
             token = "BOT_TOKEN"
+             configuration {
+                 identifier = "BotName"
+             }
         }
 
         ktorModule {
