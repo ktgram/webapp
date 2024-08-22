@@ -1,18 +1,17 @@
 [versions]
 tg-bot = "7.2.2"
-ksp = "2.0.10-1.0.24"
+ksp = "2.0.20-1.0.24"
 html = "0.11.0"
 
-kotlin = "2.0.10"
+kotlin = "2.0.20"
 
 [libraries]
-tg-bot = { module = "eu.vendeli:telegram-bot", version.ref = "tg-bot" }
 tg-webapp = { module = "eu.vendeli:webapps", version.ref = "tg-bot" }
 tg-ktor = { module = "eu.vendeli:ktor-starter", version.ref = "tg-bot" }
-tg-ksp = { module = "eu.vendeli:ksp", version.ref = "tg-bot" }
 
 kotlinx-html = { module = "org.jetbrains.kotlinx:kotlinx-html", version.ref = "html" }
 
 [plugins]
+telegram-bot = { id = "eu.vendeli.telegram-bot", version.ref = "tg-bot" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

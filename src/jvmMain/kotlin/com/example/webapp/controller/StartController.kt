@@ -12,7 +12,7 @@ class StartController {
     @CommandHandler(["/start"])
     suspend fun start(bot: TelegramBot, user: User) {
         message("Hello").replyKeyboardMarkup {
-            "test webapp" webApp "URL_TO_YOUR_WEBAPP"
+            "test webapp" webApp "URL_TO_YOUR_WEBAPP" // TODO change
         }.send(user, bot)
     }
 

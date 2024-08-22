@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.telegram.bot)
     application
     distribution
 }
@@ -23,7 +24,6 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(libs.tg.bot)
                 implementation(libs.kotlinx.html)
             }
         }
@@ -52,8 +52,4 @@ tasks {
 
 application {
     mainClass.set("com.example.webapp.TgBotApplicationKt")
-}
-
-dependencies {
-    add("kspJvm", libs.tg.ksp)
 }
