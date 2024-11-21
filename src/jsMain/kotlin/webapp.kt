@@ -1,4 +1,4 @@
-import eu.vendeli.tgbot.utils.checkIsInitDataSafe
+import eu.vendeli.ktgram.extutils.checkIsInitDataSafe
 import eu.vendeli.webapps.button.setParams
 import eu.vendeli.webapps.core.webApp
 import eu.vendeli.webapps.utils.onMainButtonClicked

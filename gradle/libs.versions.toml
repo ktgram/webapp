@@ -1,5 +1,5 @@
 [versions]
-tg-bot = "7.4.1"
+tg-bot = "7.5.0"
 ksp = "2.0.21-1.0.28"
 html = "0.11.0"
 
@@ -8,6 +8,7 @@ kotlin = "2.0.21"
 [libraries]
 tg-webapp = { module = "eu.vendeli:webapps", version.ref = "tg-bot" }
 tg-ktor = { module = "eu.vendeli:ktor-starter", version.ref = "tg-bot" }
+tg-utils = { module = "eu.vendeli:ktgram-utils", version.ref = "tg-bot" }
 
 kotlinx-html = { module = "org.jetbrains.kotlinx:kotlinx-html", version.ref = "html" }
 

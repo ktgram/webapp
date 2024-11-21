@@ -25,6 +25,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlinx.html)
+                implementation(libs.tg.utils)
             }
         }
         jvmMain {
